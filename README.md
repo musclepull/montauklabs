@@ -19,7 +19,7 @@ The frontend is built in React and JS.
 - Each company has an assignee_id, that then uses an API URL to retrieve 
   the data described below
 
-- The API returns patent date from the past 5 years from current date which each patent
+- The API returns patent date from the past 5 years from current date with each patent
   being broken down into cpc_section_id. As mentioned in the requirements document, I have only returned the first cpc_section_id entry. However, I DID create an alternate function called loadAlternatePatentData(assingnee_id) in  `./frontend/src/domains/app/thunks/load-data.js`. This does return the patent data broken down and grouped into each cpc_section_id. However, stacked bar charts will not work to display them. Would suggest pie charts by date.
 
 - I use recharts (https://recharts.org/en-US/) to create the stacked bar chart which 
