@@ -15,12 +15,15 @@ The frontend is built in React and JS.
 - I use the the website to get an idea of the patent API: https://patentsview.org/apis/api-endpoints/patents
 
 - Instead of the dropdown selection to select the three companies, I use Material UI Table Component to display them. 
-  Each company has an assignee_id, that then uses the following api, ex: https://api.patentsview.org/patents/query?q={%22_and%22:[{%22_gte%22:{%22patent_date%22:%222017-02-01%22}},{%22assignee_id%22:%22b1094623-3d25-49e1-938c-197aca941ecf%22}]}&f=[%22patent_number%22,%22patent_date%22,%22cpc_section_id%22]&o={%22per_page%22:%2010000}&s=[{%22patent_date%22:%22asc%22}] , where assignee_id = b1094623-3d25-49e1-938c-197aca941ecf.
+  
+- Each company has an assignee_id, that then uses an API URL to retrieve 
+  the data described below
 
-  This returns patent date from the past 5 years from current date which each patent being broken down into cpc_section_id. As mentioned in the requirements document, I have only returned the first cpc_section_id entry. However, I DID create an alternate function called loadAlternatePatentData(assingnee_id) in ./frontend/src/domains/app/thunks/load-data.js file. This does return the patent data broken down and grouped into each cpc_section_id. However, stacked bar charts will not work to display them. Would suggest pie charts by date.
+- The API returns patent date from the past 5 years from current date which each patent
+  being broken down into cpc_section_id. As mentioned in the requirements document, I have only returned the first cpc_section_id entry. However, I DID create an alternate function called loadAlternatePatentData(assingnee_id) in  `./frontend/src/domains/app/thunks/load-data.js`. This does return the patent data broken down and grouped into each cpc_section_id. However, stacked bar charts will not work to display them. Would suggest pie charts by date.
 
-  I use recharts to create the stacked bar chart which reveals the necessary data on hover. The ticks are set up as YYYY-MM-01.
-
+- I use recharts (https://recharts.org/en-US/) to create the stacked bar chart which 
+  reveals the necessary data on hover. The ticks are set up as YYYY-MM-01 intervals.
 
 ### **Setup**
 
