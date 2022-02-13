@@ -46,10 +46,11 @@ export function loadPatentData(assignee_id){
         axios.get(complete_url)
              .then((response) => {
           const totalPatents = response.data.total_patent_count;
-          const updated_query = '{"_and":[{"_gte":{"patent_date":"' + full_date + '"}},{"assignee_id":"' + assignee_id + '"}]}&f=["patent_number","patent_date","cpc_section_id"]&o={"per_page":' + totalPatents + '}&s=[{"patent_date":"asc"}]';
+          const updated_query = '{"_and":[{"_gte":{"patent_date":"' + full_date + '"}},{"assignee_id":"' + assignee_id + '"}]}&f=["assignee_organization","patent_number","patent_date","cpc_section_id"]&o={"per_page":' + totalPatents + '}&s=[{"patent_date":"asc"}]';
           const updated_complete_url = base_url + updated_query;
           axios.get(updated_complete_url)
                .then((response_2) => {
+                var entireObj = {};
                 var dict = {};
 
                 response_2.data.patents.map(function (row, index) {
@@ -69,7 +70,11 @@ export function loadPatentData(assignee_id){
                     }
          
                 })
-                return dispatch(setAppPatent(dict));
+                var entireObj = {};
+                const organization = response_2.data.patents[0].assignees[0].assignee_organization;
+                entireObj.organization = organization;
+                entireObj.dict = dict;
+                return dispatch(setAppPatent(entireObj));
             })       
         })
     }

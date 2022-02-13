@@ -50,69 +50,69 @@ export default function PatentStackedChart(data) {
     }
   }
 
-  for (const [key, value] of Object.entries(data.data)) {
-
-    const dataObj = {};
-    dataObj.name = key; //date
-    var A = 0;
-    var B = 0;
-    var C = 0; 
-    var D = 0;
-    var E = 0;
-    var F = 0;
-    var G = 0;
-    var H = 0;
-    var Y = 0;
-    
-    value.cpcDict.map(function(item){
-      if(item.cpc_section_id == "A"){
-        A++;
-        dataObj.A = A;
-      }
-      else if(item.cpc_section_id == "B"){
-        B++;
-        dataObj.B = B;
-      }
-      else if(item.cpc_section_id == "C"){
-        C++;
-        dataObj.C = C;
-      }    
-      else if(item.cpc_section_id == "D"){
-        D++;
-        dataObj.D = D;
-      }      
-      else if(item.cpc_section_id == "E"){
-        E++;
-        dataObj.E = E;
-      }      
-      else if(item.cpc_section_id == "F"){
-        F++;
-        dataObj.F = F;
-      }     
-      else if(item.cpc_section_id == "G"){
-        G++;
-        dataObj.G = G;
-      }
-      else if(item.cpc_section_id == "H"){
-        H++;
-        dataObj.H = H;
-      }
-      else if(item.cpc_section_id == "Y"){
-        Y++;
-        dataObj.Y = Y;
-      }
-
-      const index = list.indexOf(dataObj);
-      if(index > -1){
-          list.splice(index,1);
-      }
-      //add to dict
-      list.push(dataObj);
-  })
+  for (const [key, value] of Object.entries(data.data.dict)) {
+      const dataObj = {};
+      dataObj.name = key; //date
+      var A = 0;
+      var B = 0;
+      var C = 0; 
+      var D = 0;
+      var E = 0;
+      var F = 0;
+      var G = 0;
+      var H = 0;
+      var Y = 0;
+      
+      value.cpcDict.map(function(item){
+        if(item.cpc_section_id == "A"){
+          A++;
+          dataObj.A = A;
+        }
+        else if(item.cpc_section_id == "B"){
+          B++;
+          dataObj.B = B;
+        }
+        else if(item.cpc_section_id == "C"){
+          C++;
+          dataObj.C = C;
+        }    
+        else if(item.cpc_section_id == "D"){
+          D++;
+          dataObj.D = D;
+        }      
+        else if(item.cpc_section_id == "E"){
+          E++;
+          dataObj.E = E;
+        }      
+        else if(item.cpc_section_id == "F"){
+          F++;
+          dataObj.F = F;
+        }     
+        else if(item.cpc_section_id == "G"){
+          G++;
+          dataObj.G = G;
+        }
+        else if(item.cpc_section_id == "H"){
+          H++;
+          dataObj.H = H;
+        }
+        else if(item.cpc_section_id == "Y"){
+          Y++;
+          dataObj.Y = Y;
+        }
+  
+        const index = list.indexOf(dataObj);
+        if(index > -1){
+            list.splice(index,1);
+        }
+        //add to dict
+        list.push(dataObj);
+    })
 }
 
 
   return (
+
     <BarChart
       width={1100}
       height={700}

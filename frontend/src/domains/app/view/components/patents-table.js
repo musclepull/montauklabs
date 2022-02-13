@@ -28,7 +28,7 @@ import Button from '@mui/material/Button';
                   {row.organization}
                 </TableCell>
                 <TableCell align="right">
-                    <Button variant="outlined" href={"/patent?patent_id=" + row.assignee_id}>
+                    <Button variant="outlined" href={"/patents?assignee_id=" + row.assignee_id}>
                         View Patent
                     </Button>
                 </TableCell>

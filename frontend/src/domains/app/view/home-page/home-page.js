@@ -17,6 +17,10 @@ export default function HomePage() {
         const patents_list = patents.line_items ? patents.line_items : null;
         return (
             <div>
+             <h3 style={{paddingLeft: 0, fontSize: 25}}>Patent Analytics</h3>
+             <p>This assessment applications information about US Patents from the US Patent and
+                Trademark Office (USPTO) for 3 organizations. Given the publicly available resources on the web, 
+                this is a patent search application that organizes patent information by company (an ‘organization’ in USPTO parlance).</p>
              <PatentsTable data={patents_list}/>
             </div>
         );

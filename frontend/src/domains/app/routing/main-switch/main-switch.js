@@ -10,7 +10,7 @@ function MainSwitch() {
                 <Route exact path = "/">
                     <HomePage/>
                 </Route>
-                <Route exact path = "/patent">
+                <Route exact path = "/patents">
                     <Patent/>
                 </Route>
             </Switch>
