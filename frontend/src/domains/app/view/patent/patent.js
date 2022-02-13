@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getPatent } from "../../selectors";
 import { loadPatentData } from "../../thunks/load-data";
+import PatentStackedChart from '../components/patent-stacked-chart';
 
 import styles from './patent.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
@@ -18,17 +19,15 @@ export default function Patent() {
     }, []);
 
     if (patent !== null) {
-        const linkToClaims = "/";
         return (
             <div>
-                
+                <PatentStackedChart data={patent}/>
             </div>
         );
     }
     else {
         return (
             <div>
-
             </div>
         );
     }
